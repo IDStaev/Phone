@@ -27,7 +27,7 @@ namespace Calculator
 
                     switch (currentChar)
                     {
-                        case '1': maxSize = 1; break;
+                        case '1': maxSize = 2; break;
                         case '2': maxSize = 4; break;
                         case '3': maxSize = 4; break;
                         case '4': maxSize = 4; break;
@@ -67,7 +67,17 @@ namespace Calculator
                     {
                         case '1':
                             {
-                                str.Append("1");
+                                switch (codeLength)
+                                {
+                                    case 1: str.Append("1"); break;
+                                    case 2:
+                                        {
+                                            numbers = null;
+                                            resultText = null;
+
+                                            break;
+                                        }
+                                }
                                 break;
                             }
                         case '2':

@@ -41,24 +41,25 @@
             this.zeroButton = new System.Windows.Forms.Button();
             this.starButton = new System.Windows.Forms.Button();
             this.resultTextLabel = new System.Windows.Forms.Label();
+            this.enterButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // oneButton
             // 
             this.oneButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.oneButton.Location = new System.Drawing.Point(18, 131);
+            this.oneButton.Location = new System.Drawing.Point(9, 89);
             this.oneButton.Margin = new System.Windows.Forms.Padding(0);
             this.oneButton.Name = "oneButton";
-            this.oneButton.Size = new System.Drawing.Size(75, 57);
+            this.oneButton.Size = new System.Drawing.Size(75, 114);
             this.oneButton.TabIndex = 0;
-            this.oneButton.Text = "1";
+            this.oneButton.Text = "1 DEL";
             this.oneButton.UseVisualStyleBackColor = true;
             this.oneButton.Click += new System.EventHandler(this.oneButton_Click);
             // 
             // twoButton
             // 
             this.twoButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.twoButton.Location = new System.Drawing.Point(102, 131);
+            this.twoButton.Location = new System.Drawing.Point(93, 146);
             this.twoButton.Margin = new System.Windows.Forms.Padding(0);
             this.twoButton.Name = "twoButton";
             this.twoButton.Size = new System.Drawing.Size(75, 57);
@@ -70,10 +71,10 @@
             // threeButton
             // 
             this.threeButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.threeButton.Location = new System.Drawing.Point(186, 131);
+            this.threeButton.Location = new System.Drawing.Point(177, 89);
             this.threeButton.Margin = new System.Windows.Forms.Padding(0);
             this.threeButton.Name = "threeButton";
-            this.threeButton.Size = new System.Drawing.Size(75, 57);
+            this.threeButton.Size = new System.Drawing.Size(75, 114);
             this.threeButton.TabIndex = 2;
             this.threeButton.Text = "3def";
             this.threeButton.UseVisualStyleBackColor = true;
@@ -82,7 +83,7 @@
             // sixButton
             // 
             this.sixButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.sixButton.Location = new System.Drawing.Point(186, 197);
+            this.sixButton.Location = new System.Drawing.Point(177, 212);
             this.sixButton.Margin = new System.Windows.Forms.Padding(0);
             this.sixButton.Name = "sixButton";
             this.sixButton.Size = new System.Drawing.Size(75, 57);
@@ -94,7 +95,7 @@
             // fiveButton
             // 
             this.fiveButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.fiveButton.Location = new System.Drawing.Point(102, 197);
+            this.fiveButton.Location = new System.Drawing.Point(93, 212);
             this.fiveButton.Margin = new System.Windows.Forms.Padding(0);
             this.fiveButton.Name = "fiveButton";
             this.fiveButton.Size = new System.Drawing.Size(75, 57);
@@ -106,7 +107,7 @@
             // fourButton
             // 
             this.fourButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.fourButton.Location = new System.Drawing.Point(18, 197);
+            this.fourButton.Location = new System.Drawing.Point(9, 212);
             this.fourButton.Margin = new System.Windows.Forms.Padding(0);
             this.fourButton.Name = "fourButton";
             this.fourButton.Size = new System.Drawing.Size(75, 57);
@@ -118,7 +119,7 @@
             // nineButton
             // 
             this.nineButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nineButton.Location = new System.Drawing.Point(186, 263);
+            this.nineButton.Location = new System.Drawing.Point(177, 278);
             this.nineButton.Margin = new System.Windows.Forms.Padding(0);
             this.nineButton.Name = "nineButton";
             this.nineButton.Size = new System.Drawing.Size(75, 57);
@@ -130,7 +131,7 @@
             // eightButton
             // 
             this.eightButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.eightButton.Location = new System.Drawing.Point(102, 263);
+            this.eightButton.Location = new System.Drawing.Point(93, 278);
             this.eightButton.Margin = new System.Windows.Forms.Padding(0);
             this.eightButton.Name = "eightButton";
             this.eightButton.Size = new System.Drawing.Size(75, 57);
@@ -142,7 +143,7 @@
             // sevenButton
             // 
             this.sevenButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.sevenButton.Location = new System.Drawing.Point(18, 263);
+            this.sevenButton.Location = new System.Drawing.Point(9, 278);
             this.sevenButton.Margin = new System.Windows.Forms.Padding(0);
             this.sevenButton.Name = "sevenButton";
             this.sevenButton.Size = new System.Drawing.Size(75, 57);
@@ -154,35 +155,35 @@
             // hashButton
             // 
             this.hashButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.hashButton.Location = new System.Drawing.Point(186, 330);
+            this.hashButton.Location = new System.Drawing.Point(177, 345);
             this.hashButton.Margin = new System.Windows.Forms.Padding(0);
             this.hashButton.Name = "hashButton";
             this.hashButton.Size = new System.Drawing.Size(75, 57);
             this.hashButton.TabIndex = 11;
-            this.hashButton.Text = "#";
+            this.hashButton.Text = "# ↑";
             this.hashButton.UseVisualStyleBackColor = true;
             // 
             // zeroButton
             // 
             this.zeroButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.zeroButton.Location = new System.Drawing.Point(102, 330);
+            this.zeroButton.Location = new System.Drawing.Point(93, 345);
             this.zeroButton.Margin = new System.Windows.Forms.Padding(0);
             this.zeroButton.Name = "zeroButton";
             this.zeroButton.Size = new System.Drawing.Size(75, 57);
             this.zeroButton.TabIndex = 10;
-            this.zeroButton.Text = "0_";
+            this.zeroButton.Text = "0 ⎵";
             this.zeroButton.UseVisualStyleBackColor = true;
             this.zeroButton.Click += new System.EventHandler(this.zeroButton_Click);
             // 
             // starButton
             // 
             this.starButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.starButton.Location = new System.Drawing.Point(18, 330);
+            this.starButton.Location = new System.Drawing.Point(9, 345);
             this.starButton.Margin = new System.Windows.Forms.Padding(0);
             this.starButton.Name = "starButton";
             this.starButton.Size = new System.Drawing.Size(75, 57);
             this.starButton.TabIndex = 9;
-            this.starButton.Text = "*+";
+            this.starButton.Text = "* +";
             this.starButton.UseVisualStyleBackColor = true;
             // 
             // resultTextLabel
@@ -190,19 +191,30 @@
             this.resultTextLabel.AutoSize = true;
             this.resultTextLabel.BackColor = System.Drawing.SystemColors.Control;
             this.resultTextLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.resultTextLabel.Location = new System.Drawing.Point(18, 40);
+            this.resultTextLabel.Location = new System.Drawing.Point(13, 31);
             this.resultTextLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.resultTextLabel.Name = "resultTextLabel";
             this.resultTextLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.resultTextLabel.Size = new System.Drawing.Size(0, 25);
             this.resultTextLabel.TabIndex = 13;
-            this.resultTextLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.resultTextLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // enterButton
+            // 
+            this.enterButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.enterButton.Location = new System.Drawing.Point(93, 89);
+            this.enterButton.Name = "enterButton";
+            this.enterButton.Size = new System.Drawing.Size(75, 54);
+            this.enterButton.TabIndex = 14;
+            this.enterButton.Text = "◍";
+            this.enterButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 405);
+            this.ClientSize = new System.Drawing.Size(261, 411);
+            this.Controls.Add(this.enterButton);
             this.Controls.Add(this.resultTextLabel);
             this.Controls.Add(this.hashButton);
             this.Controls.Add(this.zeroButton);
@@ -240,5 +252,6 @@
         private Button zeroButton;
         private Button starButton;
         private Label resultTextLabel;
+        private Button enterButton;
     }
 }
