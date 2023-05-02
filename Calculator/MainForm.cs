@@ -12,21 +12,24 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private List<string> GetCharacterCodes(string text)
+        private List<string> GetCharacterCodes(string input)
         {
             var res = new List<string>();
+            int i = 0;
 
-            for (int i = 0; i < text.Length; i++)
+            while (i < input.Length)
             {
-                var tempText = new StringBuilder();
-                var tempCount = i;
+                char currentChar = input[i];
+                int j = i + 1;
 
-                do
+                while (j < input.Length && input[j] == currentChar)
                 {
-                    tempText.Append(text[tempCount].ToString());
-                } while (text[tempCount] == text[++tempCount] && tempCount < text.Length);
+                    j++;
+                }
 
-                res.Add(tempText.ToString());
+                res.Add(input.Substring(i, j - i));
+
+                i = j;
             }
 
             return res;
