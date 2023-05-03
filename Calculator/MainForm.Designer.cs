@@ -162,6 +162,7 @@
             this.hashButton.TabIndex = 12;
             this.hashButton.Text = "# ↑";
             this.hashButton.UseVisualStyleBackColor = true;
+            this.hashButton.Click += new System.EventHandler(this.hashButton_Click);
             // 
             // zeroButton
             // 

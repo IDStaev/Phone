@@ -7,6 +7,7 @@ namespace Calculator
         private string? numbers = string.Empty;
         private List<string>? numbersList = new();
         private string? resultText = string.Empty;
+        private bool isUpper = false;
         private Dictionary<char, int> totalValues = new()
         {
             {'1', 2 },
@@ -20,6 +21,7 @@ namespace Calculator
             {'9', 5 },
             {'0', 3 },
             {'*', 2 },
+            {'#', 2 },
         };
 
         public MainForm()
@@ -71,6 +73,7 @@ namespace Calculator
                 foreach (var code in input)
                 {
                     var codeLength = code.Length;
+                    char? ch = null;
 
                     switch (code.First())
                     {
@@ -78,8 +81,8 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['1'])
                                 {
-                                    case 1: str.Append("1"); break;
-                                    case 0: str.Append("@"); break;
+                                    case 1: ch = '1'; break;
+                                    case 0: ch = '@'; break;
                                 }
                                 break;
                             }
@@ -87,10 +90,10 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['2'])
                                 {
-                                    case 1: str.Append("2"); break;
-                                    case 2: str.Append("a"); break;
-                                    case 3: str.Append("b"); break;
-                                    case 0: str.Append("c"); break;
+                                    case 1: ch = '2'; break;
+                                    case 2: ch = 'a'; break;
+                                    case 3: ch = 'b'; break;
+                                    case 0: ch = 'c'; break;
                                 }
                                 break;
                             }
@@ -98,10 +101,10 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['3'])
                                 {
-                                    case 1: str.Append("3"); break;
-                                    case 2: str.Append("d"); break;
-                                    case 3: str.Append("e"); break;
-                                    case 0: str.Append("f"); break;
+                                    case 1: ch = '3'; break;
+                                    case 2: ch = 'd'; break;
+                                    case 3: ch = 'e'; break;
+                                    case 0: ch = 'f'; break;
                                 }
                                 break;
                             }
@@ -109,10 +112,10 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['4'])
                                 {
-                                    case 0: str.Append("4"); break;
-                                    case 1: str.Append("g"); break;
-                                    case 2: str.Append("h"); break;
-                                    case 3: str.Append("i"); break;
+                                    case 0: ch = '4'; break;
+                                    case 1: ch = 'g'; break;
+                                    case 2: ch = 'h'; break;
+                                    case 3: ch = 'i'; break;
                                 }
                                 break;
                             }
@@ -120,10 +123,10 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['5'])
                                 {
-                                    case 1: str.Append("5"); break;
-                                    case 2: str.Append("j"); break;
-                                    case 3: str.Append("k"); break;
-                                    case 0: str.Append("l"); break;
+                                    case 1: ch = '5'; break;
+                                    case 2: ch = 'j'; break;
+                                    case 3: ch = 'k'; break;
+                                    case 0: ch = 'l'; break;
                                 }
                                 break;
                             }
@@ -131,10 +134,10 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['6'])
                                 {
-                                    case 1: str.Append("6"); break;
-                                    case 2: str.Append("m"); break;
-                                    case 3: str.Append("n"); break;
-                                    case 0: str.Append("o"); break;
+                                    case 1: ch = '6'; break;
+                                    case 2: ch = 'm'; break;
+                                    case 3: ch = 'n'; break;
+                                    case 0: ch = 'o'; break;
                                 }
                                 break;
                             }
@@ -142,11 +145,11 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['7'])
                                 {
-                                    case 1: str.Append("7"); break;
-                                    case 2: str.Append("p"); break;
-                                    case 3: str.Append("q"); break;
-                                    case 4: str.Append("r"); break;
-                                    case 0: str.Append("s"); break;
+                                    case 1: ch = '7'; break;
+                                    case 2: ch = 'p'; break;
+                                    case 3: ch = 'q'; break;
+                                    case 4: ch = 'r'; break;
+                                    case 0: ch = 's'; break;
                                 }
                                 break;
                             }
@@ -154,10 +157,10 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['8'])
                                 {
-                                    case 1: str.Append("8"); break;
-                                    case 2: str.Append("t"); break;
-                                    case 3: str.Append("u"); break;
-                                    case 0: str.Append("v"); break;
+                                    case 1: ch = '8'; break;
+                                    case 2: ch = 't'; break;
+                                    case 3: ch = 'u'; break;
+                                    case 0: ch = 'v'; break;
                                 }
                                 break;
                             }
@@ -165,11 +168,11 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['9'])
                                 {
-                                    case 1: str.Append("9"); break;
-                                    case 2: str.Append("w"); break;
-                                    case 3: str.Append("x"); break;
-                                    case 4: str.Append("y"); break;
-                                    case 0: str.Append("z"); break;
+                                    case 1: ch = '9'; break;
+                                    case 2: ch = 'w'; break;
+                                    case 3: ch = 'x'; break;
+                                    case 4: ch = 'y'; break;
+                                    case 0: ch = 'z'; break;
                                 }
                                 break;
                             }
@@ -177,9 +180,9 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['0'])
                                 {
-                                    case 1: str.Append("0"); break;
-                                    case 2: str.Append("+"); break;
-                                    case 0: str.Append(" "); break;
+                                    case 1: ch = '0'; break;
+                                    case 2: ch = '+'; break;
+                                    case 0: ch = ' '; break;
                                 }
                                 break;
                             }
@@ -187,16 +190,36 @@ namespace Calculator
                             {
                                 switch (codeLength % totalValues['*'])
                                 {
-                                    case 1: str.Append("*"); break;
+                                    case 1: ch = '*'; break;
                                     case 0:
                                         {
-                                            //TODO
+                                            //TODO Delete
 
                                             break;
                                         }
                                 }
                                 break;
                             }
+                        case '#':
+                            {
+                                switch (codeLength % totalValues['#'])
+                                {
+                                    case 1: ch = '#'; break;
+                                    case 0: isUpper = !isUpper; break;
+                                }
+                                break;
+                            }
+                    }
+                    if(ch != null)
+                    {
+                        if (isUpper)
+                        {
+                            str.Append(ch.ToString()!.ToUpper());
+                        }
+                        else
+                        {
+                            str.Append(ch);
+                        }
                     }
                 }
             }
@@ -280,6 +303,12 @@ namespace Calculator
         private void starButton_Click(object sender, EventArgs e)
         {
             numbers += "*";
+            UpdateResultTextLabel();
+        }
+
+        private void hashButton_Click(object sender, EventArgs e)
+        {
+            numbers += "#";
             UpdateResultTextLabel();
         }
     }
