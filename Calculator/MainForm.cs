@@ -5,48 +5,56 @@ namespace Calculator
     public partial class MainForm : Form
     {
         private string? numbers = string.Empty;
+        private List<string> numbersList = new();
         private string? resultText = string.Empty;
+        private Dictionary<char, int> maxValues = new()
+        {
+            {'1', 2 },
+            {'2', 4 },
+            {'3', 4 },
+            {'4', 4 },
+            {'5', 4 },
+            {'6', 4 },
+            {'7', 5 },
+            {'8', 4 },
+            {'9', 5 },
+            {'0', 2 },
+        };
+        private char? currentChar = null;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private List<string>? GetCharacterCodes(string? input)
+        private static List<string>? GetCharacterCodes(string? input)
         {
             var res = new List<string>();
-            int i = 0;
 
             if (input is not null)
             {
-                while (i < input.Length)
+                var temp = input.Split('|', StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                foreach (var c in temp)
                 {
-                    char currentChar = input[i];
-                    int j = i + 1;
-                    int maxSize = 0;
-
-                    switch (currentChar)
+                    if (c.All(t => t == c.Last()))
                     {
-                        case '1': maxSize = 2; break;
-                        case '2': maxSize = 4; break;
-                        case '3': maxSize = 4; break;
-                        case '4': maxSize = 4; break;
-                        case '5': maxSize = 4; break;
-                        case '6': maxSize = 4; break;
-                        case '7': maxSize = 5; break;
-                        case '8': maxSize = 4; break;
-                        case '9': maxSize = 5; break;
-                        case '0': maxSize = 2; break;
+                        res.Add(c);
+                    }
+                    else
+                    {
+                        int i = c.Length - 1;
+                        var currentChar = c.Last();
+                        int j = 1;
+
+                        while (c[i] == currentChar && i > 0)
+                        {
+                            j++;
+                            i--;
+                        }
+                        res.Add(c.Substring(i + 1, j - 1));
                     }
 
-                    while (j < input.Length && input[j] == currentChar && j - i < maxSize)
-                    {
-                        j++;
-                    }
-
-                    res.Add(input.Substring(i, j - i));
-
-                    i = j;
                 }
             }
 
@@ -57,7 +65,8 @@ namespace Calculator
         {
             var str = new StringBuilder();
 
-            if(input is not null) {
+            if (input is not null)
+            {
 
                 foreach (var code in input)
                 {
@@ -67,22 +76,22 @@ namespace Calculator
                     {
                         case '1':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['1'])
                                 {
                                     case 1: str.Append("1"); break;
-                                    case 2:
-                                        {
-                                            numbers = null;
-                                            resultText = null;
+                                    //case 2:
+                                    //    {
+                                    //        numbers = null;
+                                    //        resultText = null;
 
-                                            break;
-                                        }
+                                    //        break;
+                                    //    }
                                 }
                                 break;
                             }
                         case '2':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['2'])
                                 {
                                     case 1: str.Append("2"); break;
                                     case 2: str.Append("a"); break;
@@ -93,7 +102,7 @@ namespace Calculator
                             }
                         case '3':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['3'])
                                 {
                                     case 1: str.Append("3"); break;
                                     case 2: str.Append("d"); break;
@@ -104,7 +113,7 @@ namespace Calculator
                             }
                         case '4':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['4'])
                                 {
                                     case 1: str.Append("4"); break;
                                     case 2: str.Append("g"); break;
@@ -115,7 +124,7 @@ namespace Calculator
                             }
                         case '5':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['5'])
                                 {
                                     case 1: str.Append("5"); break;
                                     case 2: str.Append("j"); break;
@@ -126,7 +135,7 @@ namespace Calculator
                             }
                         case '6':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['6'])
                                 {
                                     case 1: str.Append("6"); break;
                                     case 2: str.Append("m"); break;
@@ -137,7 +146,7 @@ namespace Calculator
                             }
                         case '7':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['7'])
                                 {
                                     case 1: str.Append("7"); break;
                                     case 2: str.Append("p"); break;
@@ -149,7 +158,7 @@ namespace Calculator
                             }
                         case '8':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['8'])
                                 {
                                     case 1: str.Append("8"); break;
                                     case 2: str.Append("t"); break;
@@ -160,7 +169,7 @@ namespace Calculator
                             }
                         case '9':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['9'])
                                 {
                                     case 1: str.Append("9"); break;
                                     case 2: str.Append("w"); break;
@@ -172,7 +181,7 @@ namespace Calculator
                             }
                         case '0':
                             {
-                                switch (codeLength)
+                                switch (codeLength % maxValues['0'])
                                 {
                                     case 1: str.Append("0"); break;
                                     case 2: str.Append(" "); break;
@@ -188,7 +197,8 @@ namespace Calculator
 
         private void UpdateResultTextLabel()
         {
-            resultText = GetText(GetCharacterCodes(numbers));
+            var list = GetCharacterCodes(numbers);
+            var resultList = GetText(list);
             resultTextLabel.Text = resultText;
         }
 
@@ -249,6 +259,12 @@ namespace Calculator
         private void zeroButton_Click(object sender, EventArgs e)
         {
             numbers += "0";
+            UpdateResultTextLabel();
+        }
+
+        private void enterButton_Click(object sender, EventArgs e)
+        {
+            numbers += "|";
             UpdateResultTextLabel();
         }
     }
