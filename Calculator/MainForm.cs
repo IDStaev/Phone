@@ -5,9 +5,9 @@ namespace Calculator
     public partial class MainForm : Form
     {
         private string? numbers = string.Empty;
-        private List<string> numbersList = new();
+        private List<string>? numbersList = new();
         private string? resultText = string.Empty;
-        private Dictionary<char, int> maxValues = new()
+        private Dictionary<char, int> totalValues = new()
         {
             {'1', 2 },
             {'2', 4 },
@@ -18,16 +18,16 @@ namespace Calculator
             {'7', 5 },
             {'8', 4 },
             {'9', 5 },
-            {'0', 2 },
+            {'0', 3 },
+            {'*', 2 },
         };
-        private char? currentChar = null;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private static List<string>? GetCharacterCodes(string? input)
+        private List<string>? GetCharacterCodes(string? input)
         {
             var res = new List<string>();
 
@@ -76,115 +76,124 @@ namespace Calculator
                     {
                         case '1':
                             {
-                                switch (codeLength % maxValues['1'])
+                                switch (codeLength % totalValues['1'])
                                 {
                                     case 1: str.Append("1"); break;
-                                    //case 2:
-                                    //    {
-                                    //        numbers = null;
-                                    //        resultText = null;
-
-                                    //        break;
-                                    //    }
+                                    case 0: str.Append("@"); break;
                                 }
                                 break;
                             }
                         case '2':
                             {
-                                switch (codeLength % maxValues['2'])
+                                switch (codeLength % totalValues['2'])
                                 {
                                     case 1: str.Append("2"); break;
                                     case 2: str.Append("a"); break;
                                     case 3: str.Append("b"); break;
-                                    case 4: str.Append("c"); break;
+                                    case 0: str.Append("c"); break;
                                 }
                                 break;
                             }
                         case '3':
                             {
-                                switch (codeLength % maxValues['3'])
+                                switch (codeLength % totalValues['3'])
                                 {
                                     case 1: str.Append("3"); break;
                                     case 2: str.Append("d"); break;
                                     case 3: str.Append("e"); break;
-                                    case 4: str.Append("f"); break;
+                                    case 0: str.Append("f"); break;
                                 }
                                 break;
                             }
                         case '4':
                             {
-                                switch (codeLength % maxValues['4'])
+                                switch (codeLength % totalValues['4'])
                                 {
-                                    case 1: str.Append("4"); break;
-                                    case 2: str.Append("g"); break;
-                                    case 3: str.Append("h"); break;
-                                    case 4: str.Append("i"); break;
+                                    case 0: str.Append("4"); break;
+                                    case 1: str.Append("g"); break;
+                                    case 2: str.Append("h"); break;
+                                    case 3: str.Append("i"); break;
                                 }
                                 break;
                             }
                         case '5':
                             {
-                                switch (codeLength % maxValues['5'])
+                                switch (codeLength % totalValues['5'])
                                 {
                                     case 1: str.Append("5"); break;
                                     case 2: str.Append("j"); break;
                                     case 3: str.Append("k"); break;
-                                    case 4: str.Append("l"); break;
+                                    case 0: str.Append("l"); break;
                                 }
                                 break;
                             }
                         case '6':
                             {
-                                switch (codeLength % maxValues['6'])
+                                switch (codeLength % totalValues['6'])
                                 {
                                     case 1: str.Append("6"); break;
                                     case 2: str.Append("m"); break;
                                     case 3: str.Append("n"); break;
-                                    case 4: str.Append("o"); break;
+                                    case 0: str.Append("o"); break;
                                 }
                                 break;
                             }
                         case '7':
                             {
-                                switch (codeLength % maxValues['7'])
+                                switch (codeLength % totalValues['7'])
                                 {
                                     case 1: str.Append("7"); break;
                                     case 2: str.Append("p"); break;
                                     case 3: str.Append("q"); break;
                                     case 4: str.Append("r"); break;
-                                    case 5: str.Append("s"); break;
+                                    case 0: str.Append("s"); break;
                                 }
                                 break;
                             }
                         case '8':
                             {
-                                switch (codeLength % maxValues['8'])
+                                switch (codeLength % totalValues['8'])
                                 {
                                     case 1: str.Append("8"); break;
                                     case 2: str.Append("t"); break;
                                     case 3: str.Append("u"); break;
-                                    case 4: str.Append("v"); break;
+                                    case 0: str.Append("v"); break;
                                 }
                                 break;
                             }
                         case '9':
                             {
-                                switch (codeLength % maxValues['9'])
+                                switch (codeLength % totalValues['9'])
                                 {
                                     case 1: str.Append("9"); break;
                                     case 2: str.Append("w"); break;
                                     case 3: str.Append("x"); break;
                                     case 4: str.Append("y"); break;
-                                    case 5: str.Append("z"); break;
+                                    case 0: str.Append("z"); break;
                                 }
                                 break;
                             }
                         case '0':
                             {
-                                switch (codeLength % maxValues['0'])
+                                switch (codeLength % totalValues['0'])
                                 {
                                     case 1: str.Append("0"); break;
-                                    case 2: str.Append(" "); break;
+                                    case 2: str.Append("+"); break;
+                                    case 0: str.Append(" "); break;
+                                }
+                                break;
+                            }
+                        case '*':
+                            {
+                                switch (codeLength % totalValues['*'])
+                                {
+                                    case 1: str.Append("*"); break;
+                                    case 0:
+                                        {
+                                            //TODO
+
+                                            break;
+                                        }
                                 }
                                 break;
                             }
@@ -197,8 +206,8 @@ namespace Calculator
 
         private void UpdateResultTextLabel()
         {
-            var list = GetCharacterCodes(numbers);
-            var resultList = GetText(list);
+            numbersList = GetCharacterCodes(numbers);
+            resultText = GetText(numbersList);
             resultTextLabel.Text = resultText;
         }
 
@@ -265,6 +274,12 @@ namespace Calculator
         private void enterButton_Click(object sender, EventArgs e)
         {
             numbers += "|";
+            UpdateResultTextLabel();
+        }
+
+        private void starButton_Click(object sender, EventArgs e)
+        {
+            numbers += "*";
             UpdateResultTextLabel();
         }
     }
