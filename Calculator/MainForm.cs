@@ -7,7 +7,6 @@ namespace Calculator
         private string? numbers = string.Empty;
         private List<string>? numbersList = new();
         private string? resultText = string.Empty;
-        private bool isUpper = false;
         private Dictionary<char, int> totalValues = new()
         {
             {'1', 2 },
@@ -20,8 +19,8 @@ namespace Calculator
             {'8', 4 },
             {'9', 5 },
             {'0', 3 },
-            {'*', 2 },
-            {'#', 2 },
+            {'*', 1 },
+            {'#', 1 },
         };
 
         public MainForm()
@@ -70,10 +69,10 @@ namespace Calculator
             if (input is not null)
             {
 
+                char? ch = null;
                 foreach (var code in input)
                 {
                     var codeLength = code.Length;
-                    char? ch = null;
 
                     switch (code.First())
                     {
@@ -188,42 +187,20 @@ namespace Calculator
                             }
                         case '*':
                             {
-                                switch (codeLength % totalValues['*'])
-                                {
-                                    case 1: ch = '*'; break;
-                                    case 0:
-                                        {
-                                            //TODO Delete
-
-                                            break;
-                                        }
-                                }
+                                ch = '*';
                                 break;
                             }
                         case '#':
                             {
-                                switch (codeLength % totalValues['#'])
-                                {
-                                    case 1: ch = '#'; break;
-                                    case 0: isUpper = !isUpper; break;
-                                }
+                                ch = '#';
                                 break;
                             }
                     }
-                    if(ch != null)
-                    {
-                        if (isUpper)
-                        {
-                            str.Append(ch.ToString()!.ToUpper());
-                        }
-                        else
-                        {
-                            str.Append(ch);
-                        }
-                    }
+                    str.Append(ch);
                 }
             }
 
+            str.Append("|");
             return str.ToString();
         }
 
@@ -309,6 +286,11 @@ namespace Calculator
         private void hashButton_Click(object sender, EventArgs e)
         {
             numbers += "#";
+            UpdateResultTextLabel();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             UpdateResultTextLabel();
         }
     }
